@@ -1,0 +1,30 @@
+.card {
+    background-color: transparent;
+    color: white;
+    font-size: 15px;
+    text-align: left;
+    border: none;
+    border-radius: 10px;
+    margin: 10px 0;
+    display: flex;
+
+    > img {
+        width: 40px;
+        margin-right: 10px;
+        border-radius: 5px;
+    }
+
+    > .info {
+        display: flex;
+        flex-direction: column;
+
+        > .playlist_title {
+            margin-bottom: 5px;
+        }
+
+        > .subtitle {
+            font-size: 12px;
+            color: gray;
+        }
+    }
+}
