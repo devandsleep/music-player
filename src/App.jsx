@@ -7,7 +7,7 @@ function App() {
   const [playlists, setPlaylists] = useState([{
     id: 1,
     title: 'Rap',
-    img: 'eminem.jpg'
+    img: 'eminem.jpg',
   },
   {
     id: 2,
