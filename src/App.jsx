@@ -16,23 +16,8 @@ function App() {
   },
   {
     id: 3,
-    title: 'Lofi',
-    img: 'lofi.jpg'
-  },
-  {
-    id: 4,
-    title: 'Lofi',
-    img: 'lofi.jpg'
-  },
-  {
-    id: 5,
-    title: 'Lofi',
-    img: 'lofi.jpg'
-  },
-  {
-    id: 6,
-    title: 'Lofi',
-    img: 'lofi.jpg'
+    title: 'Anime Lofi',
+    img: 'anime_lofi.jpg'
   }])
 
   return (
