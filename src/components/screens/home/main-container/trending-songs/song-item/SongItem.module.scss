@@ -1,11 +1,11 @@
 .song {
-    min-width: 180px;
-    height: 180px;
+    min-width: 160px;
+    height: 160px;
     margin: auto;
     margin: 0 10px;
     position: relative;
     display: flex;
-    border-radius: 15px;
+    border-radius: 10px;
     overflow: hidden;
 
     > img {
@@ -27,7 +27,7 @@
         flex-direction: column;
 
         > .title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 300;
         }
     }

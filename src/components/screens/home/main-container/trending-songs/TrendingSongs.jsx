@@ -13,23 +13,23 @@ const TrendingSongs = () => {
         },
         {
             id: 2,
-            image: 'anime_lofi.jpg',
-            title: 'Yoru ni Kakeru',
-            author: 'Yoasobi',
+            image: 'eminem.jpg',
+            title: 'Without You',
+            author: 'Eminem',
             len: 281
         },
         {
             id: 3,
-            image: 'anime_lofi.jpg',
-            title: 'Yoru ni Kakeru',
-            author: 'Yoasobi',
+            image: 'anime_girl.jpg',
+            title: 'Boku no Piko',
+            author: 'Yamada',
             len: 281
         },
         {
             id: 4,
-            image: 'anime_lofi.jpg',
-            title: 'Yoru ni Kakeru',
-            author: 'Yoasobi',
+            image: 'lofi.jpg',
+            title: 'Lofi girl',
+            author: 'Lofi',
             len: 281
         },
         {
