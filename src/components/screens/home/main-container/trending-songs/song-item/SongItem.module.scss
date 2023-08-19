@@ -1,0 +1,34 @@
+.song {
+    min-width: 180px;
+    height: 180px;
+    margin: auto;
+    margin: 0 10px;
+    position: relative;
+    display: flex;
+    border-radius: 15px;
+    overflow: hidden;
+
+    > img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+    }
+
+    > .info {
+        background-color: rgba(8, 8, 8, 0.7);
+        height: 30%;
+        width: 100%;
+        padding: 5px;
+        margin-top: auto;
+        color: white;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+
+        > .title {
+            font-size: 18px;
+            font-weight: 300;
+        }
+    }
+}
