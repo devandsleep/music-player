@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './AudioPlayer.module.scss'
 import PauseButton from '../buttons/PauseButton';
 import PlayButton from '../buttons/PlayButton';
+import { formatTime } from '../../utils/format';
 
 
 const AudioPlayer = ({ src, title, preview, author }) => {
@@ -51,11 +52,11 @@ const AudioPlayer = ({ src, title, preview, author }) => {
         setCurrentTime(newTime);
     };
 
-    const formatTime = (timeInSeconds) => {
-        const minutes = Math.floor(timeInSeconds / 60);
-        const seconds = Math.floor(timeInSeconds % 60);
-        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    };
+    // const formatTime = (timeInSeconds) => {
+    //     const minutes = Math.floor(timeInSeconds / 60);
+    //     const seconds = Math.floor(timeInSeconds % 60);
+    //     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    // };
 
     return (
         <div className={styles.player}>

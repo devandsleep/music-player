@@ -7,6 +7,7 @@ import SideBar from './side-bar/SideBar';
 import TrendingSongs from './trending-songs/TrendingSongs';
 import { PlayListsContext } from '../../../../context';
 import PopularArtists from './popular-artists/PopularArtists';
+import RecentlyPlayed from './recently-played/RecentlyPlayed';
 
 const MainContainer = () => {
 
@@ -21,9 +22,10 @@ const MainContainer = () => {
                     <div style={{ maxWidth: '85%' }}>
                         <Header />
                         <div style={{display: 'flex', height: '100%'}}>
-                            <div style={{maxWidth: '65%'}}>
+                            <div style={{maxWidth: '65%', overflowY: 'scroll'}}>
                                 <TrendingSongs />
                                 <PopularArtists />
+                                <RecentlyPlayed />
                             </div>
                             <CurrentTrack track={tracks[0]}/>
                         </div>
