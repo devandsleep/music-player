@@ -3,6 +3,8 @@ import { PlayListsContext } from '../../../../../context';
 import MainButton from '../../../../ui/buttons/MainButton';
 import PlayListBtn from '../../playlists/PlayListBtn';
 import styles from './SideBar.module.scss'
+import PlusButton from '../../../../ui/buttons/PlusButton';
+import CollectionsButton from '../../../../ui/buttons/CollectionsButton';
 
 const SideBar = () => {
 
@@ -19,10 +21,18 @@ const SideBar = () => {
                 <MainButton><img src="/src/assets/icons/podcast.svg" alt="" />Podcast</MainButton>
             </div>
             <div className={styles.collections}>
+                <div className={styles.title}>
+                    <div style={{ width: '13px' }}>
+                        <CollectionsButton />
+                    </div>
+                    Your collections
+                    <div style={{ width: '13px' }}>
+                        <PlusButton />
+                    </div>
+                </div>
                 {playlists.map((playlist) =>
                     <PlayListBtn key={playlist.id} playlist={playlist} />
                 )}
-                {/* <PlayListBtn title='Eminem' /> */}
             </div>
         </div>
     );
