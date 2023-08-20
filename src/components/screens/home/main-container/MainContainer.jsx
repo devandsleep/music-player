@@ -6,6 +6,7 @@ import Player from './player/Player';
 import SideBar from './side-bar/SideBar';
 import TrendingSongs from './trending-songs/TrendingSongs';
 import { PlayListsContext } from '../../../../context';
+import PopularArtists from './popular-artists/PopularArtists';
 
 const MainContainer = () => {
 
@@ -22,6 +23,7 @@ const MainContainer = () => {
                         <div style={{display: 'flex', height: '100%'}}>
                             <div style={{maxWidth: '65%'}}>
                                 <TrendingSongs />
+                                <PopularArtists />
                             </div>
                             <CurrentTrack track={tracks[0]}/>
                         </div>

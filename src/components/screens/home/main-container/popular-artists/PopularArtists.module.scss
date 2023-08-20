@@ -1,0 +1,22 @@
+.artists_row {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    padding-left: 25px;
+
+    >.row {
+        margin-top: 5px;
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        height: 160px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    >.row::-webkit-scrollbar {
+        width: 0;
+        display: none;
+    }
+}
