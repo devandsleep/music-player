@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './AudioPlayer.module.scss'
-import { useRef } from 'react';
 import PauseButton from '../buttons/PauseButton';
 import PlayButton from '../buttons/PlayButton';
 

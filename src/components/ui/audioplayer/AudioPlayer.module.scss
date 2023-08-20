@@ -35,7 +35,7 @@
 
     >progress {
         width: 300px;
-        
+
     }
 
     >.numbers {
@@ -61,10 +61,13 @@
 
     >.track_info {
         padding: 5px;
+        overflow: hidden;
 
         >.title {
+            overflow: hidden;
             margin-left: 10px;
             color: white;
+            white-space: nowrap;
         }
 
         >.author {

@@ -1,6 +1,65 @@
 .current_track {
-    width: 40%;
-    height: 100%;
-    background-color: rgba(87, 87, 87, 0.5);
+    width: 30%;
+    background-color: rgba(101, 104, 102, 1);
     backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+
+    > .top {
+        display: flex;
+        margin: 15px 0;
+
+        > div {
+            margin: auto 0;
+        }
+
+        > img {
+            width: 25px;
+            margin-right: 10px;
+        }
+    }
+
+    > .preview_wrapper {
+        height: 100px;
+        // overflow: hidden;
+        display: flex;
+        margin: 5px;
+        // align-items: center;
+        // justify-content: center;
+        border-radius: 15px;
+
+        > img {
+            border-radius: 15px;
+        }
+
+        > .track_info {
+            width: 100%;
+            margin: 10px;
+
+            > .title {
+                width: 100%;
+                margin-bottom: 10px;
+                font-weight: 500;
+            }
+
+            > .author {
+                color: rgb(190, 190, 190);
+                font-size: 15px;
+            }
+        }
+    }
+
+    
+
+    > .queue {
+        border-top: 1px solid gray;
+        margin-top: 20px;
+        padding-top: 10px;
+    }
+
 }
+

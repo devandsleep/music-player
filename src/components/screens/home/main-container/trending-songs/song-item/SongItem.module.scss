@@ -1,6 +1,6 @@
 .song {
-    min-width: 160px;
-    height: 160px;
+    min-width: 130px;
+    height: 130px;
     margin: auto;
     margin: 0 10px;
     position: relative;
@@ -27,7 +27,7 @@
         flex-direction: column;
 
         > .title {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 300;
         }
     }

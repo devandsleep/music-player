@@ -20,10 +20,22 @@ function App() {
     img: 'anime_lofi.jpg'
   }])
 
+  const [tracks, setTracks] = useState([
+    {
+      id: 1,
+      img: 'eminem.jpg',
+      src: 'Eminem_-_Without_Me.mp3',
+      title: 'Without Me - Eminem a.k.a Slim Shady',
+      author: 'Eminem'
+    }
+  ])
+
   return (
     <PlayListsContext.Provider value={{
       playlists,
-      setPlaylists
+      setPlaylists,
+      tracks,
+      setTracks,
     }}>
       <div className='container'>
         <Home />
