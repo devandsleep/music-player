@@ -12,25 +12,25 @@ const RecentlyPlayed = () => {
             preview: 'eminem.jpg',
             len: 292
         },{
-            id: 1,
+            id: 2,
             title: 'Without Me',
             author: 'Eminem',
             preview: 'eminem.jpg',
             len: 292
         },{
-            id: 1,
+            id: 3,
             title: 'Without Me',
             author: 'Eminem',
             preview: 'eminem.jpg',
             len: 292
         },{
-            id: 1,
+            id: 4,
             title: 'Without Me',
             author: 'Eminem',
             preview: 'eminem.jpg',
             len: 292
         },{
-            id: 1,
+            id: 5,
             title: 'Without Me',
             author: 'Eminem',
             preview: 'eminem.jpg',

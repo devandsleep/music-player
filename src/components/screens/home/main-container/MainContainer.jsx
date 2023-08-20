@@ -8,6 +8,7 @@ import TrendingSongs from './trending-songs/TrendingSongs';
 import { PlayListsContext } from '../../../../context';
 import PopularArtists from './popular-artists/PopularArtists';
 import RecentlyPlayed from './recently-played/RecentlyPlayed';
+import Switcher from './switcher/Switcher';
 
 const MainContainer = () => {
 
@@ -15,7 +16,7 @@ const MainContainer = () => {
 
     return (
         <div className={styles.screen_wrapper}>
-            <div className={styles.switcher}></div>
+            <Switcher />
             <div className={styles.container}>
                 <div className={styles.screen}>
                     <SideBar />
