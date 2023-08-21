@@ -1,7 +1,21 @@
 .queue {
-    display: flex;
-    flex-direction: column;
     border-top: 1px solid gray;
     margin-top: 20px;
-    padding-top: 20px;
+    padding-top: 30px;
+    // overflow-y: auto;
+
+    >.row {
+        margin-top: 10px;
+        height: 300px;
+        display: flex;
+        overflow-y: auto;
+        flex-direction: column;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    >.row::-webkit-scrollbar {
+        width: 0;
+        display: none;
+    }
 }
