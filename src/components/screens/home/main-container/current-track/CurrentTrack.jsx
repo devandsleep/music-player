@@ -1,4 +1,5 @@
 import styles from './CurrentTrack.module.scss'
+import QueueMusic from './queue-music/QueueMusic';
 
 const CurrentTrack = ({ track }) => {
 
@@ -15,11 +16,7 @@ const CurrentTrack = ({ track }) => {
                     <div className={styles.author}>{track.author}</div>
                 </div>
             </div>
-
-            <div className={styles.queue}>
-                <div>Queue</div>
-
-            </div>
+            <QueueMusic />
         </div>
     );
 }

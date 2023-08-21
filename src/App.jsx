@@ -30,12 +30,48 @@ function App() {
     }
   ])
 
+  const [recent_tracks, setRecentTracks] = useState([
+    {
+        id: 1,
+        title: 'Without Me',
+        author: 'Eminem',
+        preview: 'eminem.jpg',
+        len: 292
+    },{
+        id: 2,
+        title: 'Without Me',
+        author: 'Eminem',
+        preview: 'eminem.jpg',
+        len: 292
+    },{
+        id: 3,
+        title: 'Without Me',
+        author: 'Eminem',
+        preview: 'eminem.jpg',
+        len: 292
+    },{
+        id: 4,
+        title: 'Without Me',
+        author: 'Eminem',
+        preview: 'eminem.jpg',
+        len: 292
+    },{
+        id: 5,
+        title: 'Without Me',
+        author: 'Eminem',
+        preview: 'eminem.jpg',
+        len: 292
+    },
+])
+
   return (
     <PlayListsContext.Provider value={{
       playlists,
       setPlaylists,
       tracks,
       setTracks,
+      recent_tracks,
+      setRecentTracks
     }}>
       <div className='container'>
         <Home />
