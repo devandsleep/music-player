@@ -12,10 +12,8 @@ const SongItem = ({ song }) => {
             const newAuthors = release.tracks.reduce((accumulator, element) => {
                 return [...accumulator, ...element.authors];
             }, []);
-
             setAuthors(newAuthors);
         }
-
         getAuthors();
     }, [song.release]);
 
@@ -26,7 +24,7 @@ const SongItem = ({ song }) => {
                 <div className={styles.title}>{song.title}</div>
                 <div className='small_text'>
                     {authors.map(author => (
-                        <span key={author.id}>{author.name}</span>
+                        <span key={author.author_id}>{author.name}</span>
                     ))}
                 </div>
             </div>

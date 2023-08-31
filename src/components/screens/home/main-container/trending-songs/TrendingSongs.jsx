@@ -10,7 +10,6 @@ const TrendingSongs = () => {
         async function fetchTrendingSongs() {
             try {
                 const response = await MusicService.getTrending();
-                console.log(response)
                 setSongs(response);
             } catch (error) {
                 console.error('Error on fetching trending tracks', error);
