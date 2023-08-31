@@ -16,8 +16,8 @@
     }
 
     > .info {
-        background-color: rgba(8, 8, 8, 0.7);
-        height: 30%;
+        background-color: rgba(8, 8, 8, 0.8);
+        height: 35%;
         width: 100%;
         padding: 5px;
         margin-top: auto;
@@ -29,6 +29,13 @@
         > .title {
             font-size: 14px;
             font-weight: 300;
+            white-space: nowrap;
+            width: 99%;
+            overflow: hidden;
         }
     }
+}
+
+span {
+    margin-right: 5px;
 }
