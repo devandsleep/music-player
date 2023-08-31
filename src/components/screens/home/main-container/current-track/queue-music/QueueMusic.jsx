@@ -13,7 +13,7 @@ const QueueMusic = () => {
         <div className={styles.queue}>
             <h3>Queue</h3>
             <div className={styles.row}>
-                {queue.map(track => <QueueItem track={track} />)}
+                {queue.map(track => <QueueItem key={track.id} track={track} />)}
             </div>
         </div>
     );
