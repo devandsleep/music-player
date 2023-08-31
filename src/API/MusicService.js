@@ -12,4 +12,9 @@ export default class MusicService {
         return release.data;
     }
 
+    static async getPopularArtists() {
+        const release = await axios.get(`http://localhost:3001/authors/popular`)
+        return release.data;
+    }
+
 }

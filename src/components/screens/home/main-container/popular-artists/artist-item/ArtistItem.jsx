@@ -1,10 +1,18 @@
+import { useEffect } from 'react';
 import styles from './ArtistItem.module.scss'
 
 const ArtistItem = ({ artist }) => {
+
+    useEffect(() => {
+        console.log("artist: ", artist)
+    }, [])
+
     return (
         <div className={styles.artist_item}>
-            <img src={'/src/assets/images/' + artist.avatar} alt="" />
-            <h3>{artist.name}</h3>
+            <div className={styles.img_container}>
+                <img src={artist.avatar ? 'http://localhost:3001/images/' + artist.avatar : '/src/assets/images/anime_girl.jpg'} alt='img' />
+            </div>
+            <h3>{artist.username}</h3>
         </div>
     );
 }

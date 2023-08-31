@@ -1,36 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './PopularArtists.module.scss'
 import ArtistItem from './artist-item/ArtistItem';
+import MusicService from '../../../../../API/MusicService';
 
 const PopularArtists = () => {
 
-    const [artists, setArtists] = useState([
-        {
-            id: 1,
-            name: 'Eminem',
-            avatar: 'eminem.jpg',
-        },
-        {
-            id: 2,
-            name: 'Eminem',
-            avatar: 'eminem.jpg',
-        },
-        {
-            id: 3,
-            name: 'Eminem',
-            avatar: 'eminem.jpg',
-        },
-        {
-            id: 4,
-            name: 'Eminem',
-            avatar: 'eminem.jpg',
-        },
-        {
-            id: 5,
-            name: 'Eminem',
-            avatar: 'eminem.jpg',
-        },
-    ])
+    const [artists, setArtists] = useState([])
+
+    useEffect(() => {
+        async function fetchPopularArtists() {
+            try {
+                const response = await MusicService.getPopularArtists();
+                setArtists(response);
+            } catch (error) {
+                console.error('Error on fetching popular artists', error);
+            }
+        }
+
+        fetchPopularArtists();
+    }, []);
 
     return (
         <div className={styles.artists_row}>
