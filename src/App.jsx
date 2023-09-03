@@ -61,19 +61,7 @@ function App() {
       author: 'Eminem',
       preview: 'eminem.jpg',
       len: 292
-    }, {
-      id: 6,
-      title: 'Without Me',
-      author: 'Eminem',
-      preview: 'eminem.jpg',
-      len: 292
-    }, {
-      id: 7,
-      title: 'Without Me',
-      author: 'Eminem',
-      preview: 'eminem.jpg',
-      len: 292
-    },
+    }
   ])
 
   return (

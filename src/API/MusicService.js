@@ -8,8 +8,10 @@ export default class MusicService {
     }
 
     static async getRelease(release_id) {
-        const release = await axios.get(`http://localhost:3001/releases/release/${release_id}`)
-        return release.data;
+        if (release_id) {
+            const release = await axios.get(`http://localhost:3001/releases/release/${release_id}`)
+            return release.data;
+        }
     }
 
     static async getPopularArtists() {

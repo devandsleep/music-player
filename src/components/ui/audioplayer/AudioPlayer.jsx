@@ -5,7 +5,7 @@ import PlayButton from '../buttons/PlayButton';
 import { formatTime } from '../../utils/format';
 
 
-const AudioPlayer = ({ src, title, preview, author }) => {
+const AudioPlayer = ({ src, title, preview, authors }) => {
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
@@ -55,7 +55,9 @@ const AudioPlayer = ({ src, title, preview, author }) => {
                 <img src={preview} alt="" />
                 <div className={styles.track_info}>
                     <div className={styles.title}>{title}</div>
-                    <div className={styles.author}>{author}</div>
+                    <div className={styles.author}>{authors.map(author => (
+                        <span key={author.author_id}>{author.name}</span>
+                    ))}</div>
                 </div>
             </div>
             <div className={styles.menu}>

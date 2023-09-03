@@ -3,10 +3,6 @@ import styles from './ArtistItem.module.scss'
 
 const ArtistItem = ({ artist }) => {
 
-    useEffect(() => {
-        console.log("artist: ", artist)
-    }, [])
-
     return (
         <div className={styles.artist_item}>
             <div className={styles.img_container}>
