@@ -8,7 +8,7 @@ export default class MusicService {
     }
 
     static async getRelease(release_id) {
-        const release = await axios.get(`http://localhost:3001/releases/release/${release_id + 2}`)
+        const release = await axios.get(`http://localhost:3001/releases/release/${release_id}`)
         return release.data;
     }
 

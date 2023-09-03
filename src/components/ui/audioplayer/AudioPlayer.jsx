@@ -14,18 +14,14 @@ const AudioPlayer = ({ src, title, preview, author }) => {
 
     useEffect(() => {
         const audio = audioRef.current;
-
         const handleTimeUpdate = () => {
             setCurrentTime(Math.ceil(audio.currentTime));
         };
-
         const handleLoadedMetadata = () => {
             setDuration(Math.ceil(audio.duration));
         };
-
         audio.addEventListener('timeupdate', handleTimeUpdate);
         audio.addEventListener('loadedmetadata', handleLoadedMetadata);
-
         return () => {
             audio.removeEventListener('timeupdate', handleTimeUpdate);
             audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
@@ -52,12 +48,6 @@ const AudioPlayer = ({ src, title, preview, author }) => {
         setCurrentTime(newTime);
     };
 
-    // const formatTime = (timeInSeconds) => {
-    //     const minutes = Math.floor(timeInSeconds / 60);
-    //     const seconds = Math.floor(timeInSeconds % 60);
-    //     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    // };
-
     return (
         <div className={styles.player}>
             <audio ref={audioRef} src={src} />
@@ -78,20 +68,13 @@ const AudioPlayer = ({ src, title, preview, author }) => {
                     <div className={styles.numbers}>{formatTime(currentTime)}</div>
                     <progress onClick={handleProgressClick} value={currentTime} max={duration} />
                     <div className={styles.numbers}>{formatTime(duration)}</div>
-                    <input
-                        className={styles.audio_volume}
-                        type="range"
-                        min="0"
-                        max="1"
-                        step="0.01"
-                        value={volume}
-                        onChange={(e) => {
-                            const newVolume = parseFloat(e.target.value);
-                            setVolume(newVolume);
-                            if (audioRef.current) {
-                                audioRef.current.volume = newVolume;
-                            }
-                        }}
+                    <input className={styles.audio_volume} type="range" min="0" max="1" step="0.01" value={volume} onChange={(e) => {
+                        const newVolume = parseFloat(e.target.value);
+                        setVolume(newVolume);
+                        if (audioRef.current) {
+                            audioRef.current.volume = newVolume;
+                        }
+                    }}
                     />
                 </div>
             </div>
