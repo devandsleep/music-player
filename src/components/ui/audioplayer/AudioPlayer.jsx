@@ -29,7 +29,6 @@ const AudioPlayer = ({ audio, title, preview, authors, nextTrack, previousTrack 
     }, []);
 
     useEffect(() => {
-        // Как только меняется URL аудио, сделайте попытку воспроизведения
         if (audioRef.current) {
             audioRef.current.src = audio;
             if (isPlaying) {

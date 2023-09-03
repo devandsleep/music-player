@@ -13,7 +13,12 @@ const Player = () => {
             try {
                 const response = await MusicService.getTrending();
                 setSongs(response);
-                setCurrentTrack(response[0])
+                const lastSelectedTrack = loadCurrentTrackFromLocalStorage();
+                if (lastSelectedTrack) {
+                    setCurrentTrack(lastSelectedTrack);
+                } else {
+                    setCurrentTrack(response[0])
+                }
             } catch (error) {
                 console.error('Error on fetching tracks for player', error);
             }
@@ -39,30 +44,30 @@ const Player = () => {
     }, [currentTrack.release]);
 
     const setNextTrack = () => {
-        // Найдем индекс текущего трека в массиве songs
         const currentIndex = songs.findIndex((song) => song.id === currentTrack.id);
-
-        // Если индекс не найден или текущий трек - последний, вернемся к первому треку
         const nextIndex = (currentIndex + 1) % songs.length;
-
-        // Установим новый текущий трек
         setCurrentTrack(songs[nextIndex]);
+        saveCurrentTrackToLocalStorage(songs[nextIndex]);
     };
 
     const setPreviousTrack = () => {
-        // Найдем индекс текущего трека в массиве songs
         const currentIndex = songs.findIndex((song) => song.id === currentTrack.id);
-
-        // Если индекс не найден или текущий трек - первый, переходите к последнему треку в массиве
         const previousIndex =
             currentIndex === -1 || currentIndex === 0
                 ? songs.length - 1
                 : currentIndex - 1;
-
-        // Установим новый текущий трек
         setCurrentTrack(songs[previousIndex]);
+        saveCurrentTrackToLocalStorage(songs[previousIndex]);
     };
 
+    const saveCurrentTrackToLocalStorage = (track) => {
+        localStorage.setItem('currentTrack', JSON.stringify(track));
+    };
+
+    const loadCurrentTrackFromLocalStorage = () => {
+        const trackJSON = localStorage.getItem('currentTrack');
+        return trackJSON ? JSON.parse(trackJSON) : null;
+    };
 
     return (
         <div className={styles.player}>
