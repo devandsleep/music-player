@@ -5,7 +5,7 @@ import PlayButton from '../buttons/PlayButton';
 import { formatTime } from '../../utils/format';
 
 
-const AudioPlayer = ({ src, title, preview, authors }) => {
+const AudioPlayer = ({ audio, title, preview, authors, nextTrack, previousTrack }) => {
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
@@ -27,6 +27,16 @@ const AudioPlayer = ({ src, title, preview, authors }) => {
             audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
         };
     }, []);
+
+    useEffect(() => {
+        // Как только меняется URL аудио, сделайте попытку воспроизведения
+        if (audioRef.current) {
+            audioRef.current.src = audio;
+            if (isPlaying) {
+                audioRef.current.play();
+            }
+        }
+    }, [audio]);
 
     const togglePlay = () => {
         const audio = audioRef.current;
@@ -50,7 +60,7 @@ const AudioPlayer = ({ src, title, preview, authors }) => {
 
     return (
         <div className={styles.player}>
-            <audio ref={audioRef} src={src} />
+            <audio ref={audioRef} src={audio} />
             <div className={styles.preview}>
                 <img src={preview} alt="" />
                 <div className={styles.track_info}>
@@ -62,9 +72,9 @@ const AudioPlayer = ({ src, title, preview, authors }) => {
             </div>
             <div className={styles.menu}>
                 <div className={styles.player_buttons}>
-                    <button><img src="/src/assets/icons/previous.svg" alt="" /></button>
+                    <button onClick={previousTrack}><img src="/src/assets/icons/previous.svg" alt="" /></button>
                     {isPlaying ? <PauseButton onClick={togglePlay} /> : <PlayButton onClick={togglePlay} />}
-                    <button><img src="/src/assets/icons/next.svg" alt="" /></button>
+                    <button onClick={nextTrack}><img src="/src/assets/icons/next.svg" alt="" /></button>
                 </div>
                 <div className={styles.progress_bar}>
                     <div className={styles.numbers}>{formatTime(currentTime)}</div>

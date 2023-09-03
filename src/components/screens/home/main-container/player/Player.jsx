@@ -30,7 +30,6 @@ const Player = () => {
                         return [...accumulator, ...element.authors];
                     }, []);
                     setAuthors(newAuthors);
-                    console.log(authors)
                 } catch (error) {
                     console.error('Error on fetching release', error);
                 }
@@ -39,14 +38,42 @@ const Player = () => {
         getAuthors();
     }, [currentTrack.release]);
 
+    const setNextTrack = () => {
+        // Найдем индекс текущего трека в массиве songs
+        const currentIndex = songs.findIndex((song) => song.id === currentTrack.id);
+
+        // Если индекс не найден или текущий трек - последний, вернемся к первому треку
+        const nextIndex = (currentIndex + 1) % songs.length;
+
+        // Установим новый текущий трек
+        setCurrentTrack(songs[nextIndex]);
+    };
+
+    const setPreviousTrack = () => {
+        // Найдем индекс текущего трека в массиве songs
+        const currentIndex = songs.findIndex((song) => song.id === currentTrack.id);
+
+        // Если индекс не найден или текущий трек - первый, переходите к последнему треку в массиве
+        const previousIndex =
+            currentIndex === -1 || currentIndex === 0
+                ? songs.length - 1
+                : currentIndex - 1;
+
+        // Установим новый текущий трек
+        setCurrentTrack(songs[previousIndex]);
+    };
+
+
     return (
         <div className={styles.player}>
             {currentTrack && (
                 <AudioPlayer
                     preview={currentTrack.preview ? 'http://localhost:3001/images/' + currentTrack.preview : "/src/assets/images/anime_girl.jpg"}
-                    src={'http://localhost:3001/audio/' + currentTrack.audio}
+                    audio={'http://localhost:3001/audio/' + currentTrack.audio}
                     title={currentTrack.title}
                     authors={authors}
+                    nextTrack={setNextTrack}
+                    previousTrack={setPreviousTrack}
                 />
             )}
         </div>
