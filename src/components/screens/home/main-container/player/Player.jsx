@@ -56,9 +56,7 @@ const Player = () => {
         <div className={styles.player}>
             {track && (
                 <AudioPlayer
-                    preview={track.preview ? 'http://localhost:3001/images/' + track.preview : "/src/assets/images/anime_girl.jpg"}
-                    audio={'http://localhost:3001/audio/' + track.audio}
-                    title={track.title}
+                    track={track}
                     authors={authors}
                     nextTrack={setNextTrack}
                     previousTrack={setPreviousTrack}

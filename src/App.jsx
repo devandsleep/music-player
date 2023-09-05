@@ -21,40 +21,6 @@ function App() {
     img: 'anime_lofi.jpg'
   }])
   const [songs, setSongs] = useState([])
-  const [recent_tracks, setRecentTracks] = useState([
-    {
-      id: 1,
-      title: 'Without Me',
-      author: 'Eminem',
-      preview: 'eminem.jpg',
-      len: 292
-    }, {
-      id: 2,
-      title: 'Without Me',
-      author: 'Eminem',
-      preview: 'eminem.jpg',
-      len: 292
-    }, {
-      id: 3,
-      title: 'Without Me',
-      author: 'Eminem',
-      preview: 'eminem.jpg',
-      len: 292
-    }, {
-      id: 4,
-      title: 'Without Me',
-      author: 'Eminem',
-      preview: 'eminem.jpg',
-      len: 292
-    }, {
-      id: 5,
-      title: 'Without Me',
-      author: 'Eminem',
-      preview: 'eminem.jpg',
-      len: 292
-    }
-  ])
-
   const [track, setCurrentTrack] = useState({})
 
   const saveCurrentTrackToLocalStorage = (track) => {
@@ -87,9 +53,7 @@ function App() {
       track,
       setCurrentTrack,
       saveCurrentTrackToLocalStorage,
-      loadCurrentTrackFromLocalStorage,
-      recent_tracks,
-      setRecentTracks
+      loadCurrentTrackFromLocalStorage
     }}>
       <div className='container'>
         <Home />

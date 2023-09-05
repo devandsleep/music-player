@@ -5,7 +5,7 @@ import { formatTime } from '../../../../../utils/format';
 const TrackItem = ({ track }) => {
     return (
         <div className={styles.track_item}>
-            <img src={'/src/assets/images/' + track.preview} alt="" />
+            <img src={track.preview ? 'http://localhost:3001/images/' + track.preview : "/src/assets/images/anime_girl.jpg"} alt="" />
             <div className={styles.info}>
                 <div className={styles.name}>{track.title}</div>
                 <div className='small_text'>{track.author}</div>

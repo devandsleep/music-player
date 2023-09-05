@@ -12,7 +12,7 @@ const QueueMusic = () => {
             <h3>Queue</h3>
             <div className={styles.row}>
                 {songs.map(song => 
-                <div className={song.id === track.id ? styles.selected : ''}><QueueItem key={song.id} track={song} /></div>)}
+                <div key={song.id} className={song.id === track.id ? styles.selected : ''}><QueueItem track={song} /></div>)}
             </div>
         </div>
     );

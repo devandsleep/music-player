@@ -5,7 +5,7 @@ import PlayButton from '../buttons/PlayButton';
 import { formatTime } from '../../utils/format';
 
 
-const AudioPlayer = ({ audio, title, preview, authors, nextTrack, previousTrack }) => {
+const AudioPlayer = ({ track, authors, nextTrack, previousTrack }) => {
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
@@ -28,14 +28,35 @@ const AudioPlayer = ({ audio, title, preview, authors, nextTrack, previousTrack 
         };
     }, []);
 
-    useEffect(() => {
-        if (audioRef.current) {
-            audioRef.current.src = audio;
-            if (isPlaying) {
-                audioRef.current.play();
+    const addToRecentTracks = (track) => {
+        let recentTracks = JSON.parse(localStorage.getItem('recentTracks2')) || [];
+        const isDuplicate = recentTracks.some((recentTrack) => recentTrack.id === track.id);
+
+        if (isDuplicate) {
+            const index = recentTracks.findIndex(obj => obj.id === track.id);
+            if (index !== -1) {
+                recentTracks.splice(index, 1);
             }
         }
-    }, [audio]);
+        
+        recentTracks.unshift(track);
+        if (recentTracks.length > 10) {
+            recentTracks = recentTracks.slice(0, 10);
+        }
+        localStorage.setItem('recentTracks2', JSON.stringify(recentTracks));
+    };
+
+
+
+    useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.src = 'http://localhost:3001/audio/' + track.audio;
+            if (isPlaying) {
+                audioRef.current.play();
+                addToRecentTracks(track)
+            }
+        }
+    }, [track.audio]);
 
     const togglePlay = () => {
         const audio = audioRef.current;
@@ -43,6 +64,7 @@ const AudioPlayer = ({ audio, title, preview, authors, nextTrack, previousTrack 
             audio.pause();
         } else {
             audio.play();
+            addToRecentTracks(track)
         }
         setIsPlaying(!isPlaying);
     };
@@ -59,11 +81,11 @@ const AudioPlayer = ({ audio, title, preview, authors, nextTrack, previousTrack 
 
     return (
         <div className={styles.player}>
-            <audio ref={audioRef} src={audio} />
+            <audio ref={audioRef} src={'http://localhost:3001/audio/' + track.audio} />
             <div className={styles.preview}>
-                <img src={preview} alt="" />
+                <img src={track.preview ? 'http://localhost:3001/images/' + track.preview : "/src/assets/images/anime_girl.jpg"} alt="" />
                 <div className={styles.track_info}>
-                    <div className={styles.title}>{title}</div>
+                    <div className={styles.title}>{track.title}</div>
                     <div className={styles.author}>{authors.map(author => (
                         <span key={author.author_id}>{author.name}</span>
                     ))}</div>
@@ -72,8 +94,8 @@ const AudioPlayer = ({ audio, title, preview, authors, nextTrack, previousTrack 
             <div className={styles.menu}>
                 <div className={styles.player_buttons}>
                     <button onClick={previousTrack}><img src="/src/assets/icons/previous.svg" alt="" /></button>
-                    <div style={{width: '80px'}}>
-                    {isPlaying ? <PauseButton onClick={togglePlay} /> : <PlayButton onClick={togglePlay} />}
+                    <div style={{ width: '80px' }}>
+                        {isPlaying ? <PauseButton onClick={togglePlay} /> : <PlayButton onClick={togglePlay} />}
                     </div>
                     <button onClick={nextTrack}><img src="/src/assets/icons/next.svg" alt="" /></button>
                 </div>
