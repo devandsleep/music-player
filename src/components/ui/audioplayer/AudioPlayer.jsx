@@ -72,7 +72,9 @@ const AudioPlayer = ({ audio, title, preview, authors, nextTrack, previousTrack 
             <div className={styles.menu}>
                 <div className={styles.player_buttons}>
                     <button onClick={previousTrack}><img src="/src/assets/icons/previous.svg" alt="" /></button>
+                    <div style={{width: '80px'}}>
                     {isPlaying ? <PauseButton onClick={togglePlay} /> : <PlayButton onClick={togglePlay} />}
+                    </div>
                     <button onClick={nextTrack}><img src="/src/assets/icons/next.svg" alt="" /></button>
                 </div>
                 <div className={styles.progress_bar}>
