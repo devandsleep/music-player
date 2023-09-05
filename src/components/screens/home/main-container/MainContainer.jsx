@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import styles from './MainContainer.module.scss'
 import CurrentTrack from './current-track/CurrentTrack';
 import Header from './header/Header';
@@ -11,9 +11,6 @@ import RecentlyPlayed from './recently-played/RecentlyPlayed';
 import Switcher from './switcher/Switcher';
 
 const MainContainer = () => {
-
-    const {tracks} = useContext(PlayListsContext)
-
     return (
         <div className={styles.screen_wrapper}>
             <Switcher />
@@ -28,7 +25,7 @@ const MainContainer = () => {
                                 <PopularArtists />
                                 <RecentlyPlayed />
                             </div>
-                            <CurrentTrack track={tracks[0]}/>
+                            <CurrentTrack />
                         </div>
                     </div>
                 </div>

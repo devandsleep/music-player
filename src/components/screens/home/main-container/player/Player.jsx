@@ -1,29 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AudioPlayer from '../../../../ui/audioplayer/AudioPlayer';
 import styles from './Player.module.scss'
 import MusicService from '../../../../../API/MusicService';
+import { PlayListsContext } from '../../../../../context';
 
 const Player = () => {
-    const [songs, setSongs] = useState([])
     const [currentTrack, setCurrentTrack] = useState({})
     const [authors, setAuthors] = useState([])
+    const {songs, setSongs, 
+        loadCurrentTrackFromLocalStorage, 
+        saveCurrentTrackToLocalStorage} = useContext(PlayListsContext)
 
     useEffect(() => {
-        async function fetchTrendingSongs() {
-            try {
-                const response = await MusicService.getTrending();
-                setSongs(response);
-                const lastSelectedTrack = loadCurrentTrackFromLocalStorage();
-                if (lastSelectedTrack) {
-                    setCurrentTrack(lastSelectedTrack);
-                } else {
-                    setCurrentTrack(response[0])
-                }
-            } catch (error) {
-                console.error('Error on fetching tracks for player', error);
-            }
+        const lastSelectedTrack = loadCurrentTrackFromLocalStorage()
+        if (lastSelectedTrack) {
+            setCurrentTrack(lastSelectedTrack);
+        } else {
+            setCurrentTrack(songs[0])
         }
-        fetchTrendingSongs();
     }, []);
 
     useEffect(() => {
@@ -58,15 +52,6 @@ const Player = () => {
                 : currentIndex - 1;
         setCurrentTrack(songs[previousIndex]);
         saveCurrentTrackToLocalStorage(songs[previousIndex]);
-    };
-
-    const saveCurrentTrackToLocalStorage = (track) => {
-        localStorage.setItem('currentTrack', JSON.stringify(track));
-    };
-
-    const loadCurrentTrackFromLocalStorage = () => {
-        const trackJSON = localStorage.getItem('currentTrack');
-        return trackJSON ? JSON.parse(trackJSON) : null;
     };
 
     return (

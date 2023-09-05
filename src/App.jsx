@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Home from './components/screens/home/Home'
 import { PlayListsContext } from './context'
+import MusicService from './API/MusicService'
 
 function App() {
   const [playlists, setPlaylists] = useState([{
@@ -19,17 +20,7 @@ function App() {
     title: 'Anime Lofi',
     img: 'anime_lofi.jpg'
   }])
-
-  const [tracks, setTracks] = useState([
-    {
-      id: 1,
-      img: 'eminem.jpg',
-      src: 'Eminem_-_Without_Me.mp3',
-      title: 'Without Me - Eminem a.k.a Slim Shady',
-      author: 'Eminem'
-    }
-  ])
-
+  const [songs, setSongs] = useState([])
   const [recent_tracks, setRecentTracks] = useState([
     {
       id: 1,
@@ -64,12 +55,39 @@ function App() {
     }
   ])
 
+  const [track, setCurrentTrack] = useState({})
+
+  const saveCurrentTrackToLocalStorage = (track) => {
+    localStorage.setItem('currentTrack', JSON.stringify(track));
+  };
+
+  const loadCurrentTrackFromLocalStorage = () => {
+    const trackJSON = localStorage.getItem('currentTrack');
+    return trackJSON ? JSON.parse(trackJSON) : null;
+  };
+
+  useEffect(() => {
+    async function fetchTrendingSongs() {
+      try {
+        const response = await MusicService.getTrending();
+        setSongs(response);
+      } catch (error) {
+        console.error('Error on fetching tracks for player', error);
+      }
+    }
+    fetchTrendingSongs();
+  }, []);
+
   return (
     <PlayListsContext.Provider value={{
       playlists,
       setPlaylists,
-      tracks,
-      setTracks,
+      songs,
+      setSongs,
+      track,
+      setCurrentTrack,
+      saveCurrentTrackToLocalStorage,
+      loadCurrentTrackFromLocalStorage,
       recent_tracks,
       setRecentTracks
     }}>
