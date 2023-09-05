@@ -5,10 +5,8 @@ import MusicService from '../../../../../API/MusicService';
 import { PlayListsContext } from '../../../../../context';
 
 const Player = () => {
-    const [currentTrack, setCurrentTrack] = useState({})
     const [authors, setAuthors] = useState([])
-    const {songs, setSongs, 
-        loadCurrentTrackFromLocalStorage, 
+    const {track, setCurrentTrack, songs, loadCurrentTrackFromLocalStorage, 
         saveCurrentTrackToLocalStorage} = useContext(PlayListsContext)
 
     useEffect(() => {
@@ -22,9 +20,9 @@ const Player = () => {
 
     useEffect(() => {
         async function getAuthors() {
-            if (currentTrack.release) {
+            if (track.release) {
                 try {
-                    const release = await MusicService.getRelease(currentTrack.release);
+                    const release = await MusicService.getRelease(track.release);
                     const newAuthors = release.tracks.reduce((accumulator, element) => {
                         return [...accumulator, ...element.authors];
                     }, []);
@@ -35,17 +33,17 @@ const Player = () => {
             }
         }
         getAuthors();
-    }, [currentTrack.release]);
+    }, [track.release]);
 
     const setNextTrack = () => {
-        const currentIndex = songs.findIndex((song) => song.id === currentTrack.id);
+        const currentIndex = songs.findIndex((song) => song.id === track.id);
         const nextIndex = (currentIndex + 1) % songs.length;
         setCurrentTrack(songs[nextIndex]);
         saveCurrentTrackToLocalStorage(songs[nextIndex]);
     };
 
     const setPreviousTrack = () => {
-        const currentIndex = songs.findIndex((song) => song.id === currentTrack.id);
+        const currentIndex = songs.findIndex((song) => song.id === track.id);
         const previousIndex =
             currentIndex === -1 || currentIndex === 0
                 ? songs.length - 1
@@ -56,11 +54,11 @@ const Player = () => {
 
     return (
         <div className={styles.player}>
-            {currentTrack && (
+            {track && (
                 <AudioPlayer
-                    preview={currentTrack.preview ? 'http://localhost:3001/images/' + currentTrack.preview : "/src/assets/images/anime_girl.jpg"}
-                    audio={'http://localhost:3001/audio/' + currentTrack.audio}
-                    title={currentTrack.title}
+                    preview={track.preview ? 'http://localhost:3001/images/' + track.preview : "/src/assets/images/anime_girl.jpg"}
+                    audio={'http://localhost:3001/audio/' + track.audio}
+                    title={track.title}
                     authors={authors}
                     nextTrack={setNextTrack}
                     previousTrack={setPreviousTrack}

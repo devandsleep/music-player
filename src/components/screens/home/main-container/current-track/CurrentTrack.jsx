@@ -12,8 +12,10 @@ const CurrentTrack = () => {
         const lastSelectedTrack = loadCurrentTrackFromLocalStorage()
         if (lastSelectedTrack) {
             setCurrentTrack(lastSelectedTrack);
+        } else {
+            setCurrentTrack(songs[0])
         }
-    }, [track]);
+    }, []);
 
     useEffect(() => {
         async function getAuthors() {

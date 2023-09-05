@@ -1,19 +1,18 @@
-import { useContext, useState } from 'react';
+import { useContext} from 'react';
 import styles from './QueueMusic.module.scss'
 import QueueItem from './QueueItem.jsx/QueueItem';
 import { PlayListsContext } from '../../../../../../context';
 
 
 const QueueMusic = () => {
-
-    const { recent_tracks } = useContext(PlayListsContext)
-    const [queue, setQueue] = useState(recent_tracks)
+    const {songs, track, loadCurrentTrackFromLocalStorage} = useContext(PlayListsContext)
 
     return (
         <div className={styles.queue}>
             <h3>Queue</h3>
             <div className={styles.row}>
-                {queue.map(track => <QueueItem key={track.id} track={track} />)}
+                {songs.map(song => 
+                <div className={song.id === track.id ? styles.selected : ''}><QueueItem key={song.id} track={song} /></div>)}
             </div>
         </div>
     );
