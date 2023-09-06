@@ -1,0 +1,43 @@
+.track_item {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    margin: 10px 0;
+    cursor: pointer;
+
+    > .img_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        border-radius: 20%;
+        overflow: hidden;
+
+        > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    }
+
+    > .info {
+        margin-left: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 5px;
+
+        > .title {
+            margin: auto;
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        > .authors_list {
+            color: white;
+            font-size: 12px;
+        }
+    }
+}
