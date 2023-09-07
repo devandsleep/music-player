@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import Home from './components/screens/home/Home'
-import { PlayListsContext } from './context'
+import { MusicContext } from './context'
 import MusicService from './API/MusicService'
 
 function App() {
@@ -45,7 +45,7 @@ function App() {
   }, []);
 
   return (
-    <PlayListsContext.Provider value={{
+    <MusicContext.Provider value={{
       playlists,
       setPlaylists,
       songs,
@@ -58,7 +58,7 @@ function App() {
       <div className='container'>
         <Home />
       </div>
-    </PlayListsContext.Provider>
+    </MusicContext.Provider>
   )
 }
 

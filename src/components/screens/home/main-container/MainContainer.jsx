@@ -5,7 +5,6 @@ import Header from './header/Header';
 import Player from './player/Player';
 import SideBar from './side-bar/SideBar';
 import TrendingSongs from './trending-songs/TrendingSongs';
-import { PlayListsContext } from '../../../../context';
 import PopularArtists from './popular-artists/PopularArtists';
 import RecentlyPlayed from './recently-played/RecentlyPlayed';
 import Switcher from './switcher/Switcher';

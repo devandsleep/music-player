@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Search.module.scss'
 import SearchInput from '../../../../ui/inputs/SearchInput';
-import SearchService from '../../../../../API/SearchServiсe';
+import SearchService from '../../../../../API/SearchServiсe.js';
 import FoundAuthor from './results/FoundAuthor';
 import FoundTrack from './results/FoundTrack';
 

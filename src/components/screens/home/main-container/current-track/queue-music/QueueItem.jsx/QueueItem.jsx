@@ -5,6 +5,7 @@ import MusicService from '../../../../../../../API/MusicService';
 
 const QueueItem = ({ track }) => {
     const [authors, setAuthors] = useState([])
+    
 
     useEffect(() => {
         async function getAuthors() {

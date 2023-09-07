@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
 import styles from './RecentlyPlayed.module.scss'
 import TrackItem from './track-item/TrackItem';
-import { PlayListsContext } from '../../../../../context';
+import { MusicContext } from '../../../../../context';
 
 const RecentlyPlayed = () => {
     const [recent_tracks, setRecentTracks] = useState([])
-    const {track} = useContext(PlayListsContext)
+    const {track} = useContext(MusicContext)
 
     useEffect(() => {
         const recentTracks = JSON.parse(localStorage.getItem('recentTracks2')) || []

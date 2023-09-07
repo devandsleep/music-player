@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const PlayListsContext = createContext(null);
+export const MusicContext = createContext(null);

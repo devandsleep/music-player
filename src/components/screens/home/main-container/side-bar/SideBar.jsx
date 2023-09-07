@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PlayListsContext } from '../../../../../context';
+import { MusicContext } from '../../../../../context';
 import MainButton from '../../../../ui/buttons/MainButton';
 import PlayListBtn from '../../playlists/PlayListBtn';
 import styles from './SideBar.module.scss'
@@ -8,7 +8,7 @@ import CollectionsButton from '../../../../ui/buttons/CollectionsButton';
 
 const SideBar = () => {
 
-    const { playlists } = useContext(PlayListsContext)
+    const { playlists } = useContext(MusicContext)
 
 
     return (

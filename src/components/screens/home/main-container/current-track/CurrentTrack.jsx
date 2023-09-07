@@ -2,11 +2,11 @@ import { useContext, useEffect, useState } from 'react';
 import styles from './CurrentTrack.module.scss'
 import QueueMusic from './queue-music/QueueMusic';
 import MusicService from '../../../../../API/MusicService';
-import { PlayListsContext } from '../../../../../context';
+import { MusicContext } from '../../../../../context';
 
 const CurrentTrack = () => {
     const [authors, setAuthors] = useState([])
-    const {track, setCurrentTrack, loadCurrentTrackFromLocalStorage} = useContext(PlayListsContext)
+    const {track, setCurrentTrack, loadCurrentTrackFromLocalStorage} = useContext(MusicContext)
 
     useEffect(() => {
         const lastSelectedTrack = loadCurrentTrackFromLocalStorage()

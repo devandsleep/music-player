@@ -1,11 +1,11 @@
 import { useContext} from 'react';
 import styles from './QueueMusic.module.scss'
 import QueueItem from './QueueItem.jsx/QueueItem';
-import { PlayListsContext } from '../../../../../../context';
+import { MusicContext } from '../../../../../../context';
 
 
 const QueueMusic = () => {
-    const {songs, track, loadCurrentTrackFromLocalStorage} = useContext(PlayListsContext)
+    const {songs, track } = useContext(MusicContext)
 
     return (
         <div className={styles.queue}>

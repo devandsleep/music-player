@@ -2,12 +2,12 @@ import { useContext, useEffect, useState } from 'react';
 import AudioPlayer from '../../../../ui/audioplayer/AudioPlayer';
 import styles from './Player.module.scss'
 import MusicService from '../../../../../API/MusicService';
-import { PlayListsContext } from '../../../../../context';
+import { MusicContext } from '../../../../../context';
 
 const Player = () => {
     const [authors, setAuthors] = useState([])
     const {track, setCurrentTrack, songs, loadCurrentTrackFromLocalStorage, 
-        saveCurrentTrackToLocalStorage} = useContext(PlayListsContext)
+        saveCurrentTrackToLocalStorage} = useContext(MusicContext)
 
     useEffect(() => {
         const lastSelectedTrack = loadCurrentTrackFromLocalStorage()
