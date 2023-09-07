@@ -22,6 +22,7 @@ function App() {
   }])
   const [songs, setSongs] = useState([])
   const [track, setCurrentTrack] = useState({})
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const saveCurrentTrackToLocalStorage = (track) => {
     localStorage.setItem('currentTrack', JSON.stringify(track));
@@ -44,16 +45,23 @@ function App() {
     fetchTrendingSongs();
   }, []);
 
+  const changeTrack = (newTrack) => {
+    setCurrentTrack(newTrack)
+    setIsPlaying(true)
+  }
+
   return (
     <MusicContext.Provider value={{
       playlists,
-      setPlaylists,
+      changeTrack,
       songs,
       setSongs,
       track,
       setCurrentTrack,
       saveCurrentTrackToLocalStorage,
-      loadCurrentTrackFromLocalStorage
+      loadCurrentTrackFromLocalStorage,
+      isPlaying,
+      setIsPlaying,
     }}>
       <div className='container'>
         <Home />

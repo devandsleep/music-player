@@ -16,7 +16,7 @@ const RecentlyPlayed = () => {
         <div className={styles.recently_played}>
             <h3>Recently Played</h3>
             <div>
-                {recent_tracks.map(track => <TrackItem key={track.id} track={track} />)}
+                {recent_tracks.map(track => <TrackItem key={track.id} trackData={track} />)}
             </div>
         </div>
      );

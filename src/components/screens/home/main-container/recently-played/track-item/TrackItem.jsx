@@ -1,13 +1,16 @@
 import styles from './TrackItem.module.scss'
 import PlayButton from '../../../../../ui/buttons/PlayButton'
 import { formatTime } from '../../../../../utils/format';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { MusicContext } from '../../../../../../context';
+import PauseButton from '../../../../../ui/buttons/PauseButton';
 
-const TrackItem = ({ track }) => {
+const TrackItem = ({ trackData }) => {
     const [duration, setDuration] = useState(null);
+    const {changeTrack, track, isPlaying, setIsPlaying} = useContext(MusicContext)
 
     useEffect(() => {
-        const audio = new Audio(`http://localhost:3001/audio/${track.audio}`);
+        const audio = new Audio(`http://localhost:3001/audio/${trackData.audio}`);
     
         const handleLoadedMetadata = () => {
           const trackDuration = Math.floor(audio.duration);
@@ -18,18 +21,20 @@ const TrackItem = ({ track }) => {
         return () => {
           audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
         };
-      }, [track.audio]);
+      }, [trackData.audio]);
 
     return (
         <div className={styles.track_item}>
-            <img src={track.preview ? 'http://localhost:3001/images/' + track.preview : "/src/assets/images/anime_girl.jpg"} alt="" />
+            <img src={trackData.preview ? 'http://localhost:3001/images/' + trackData.preview : "/src/assets/images/anime_girl.jpg"} alt="" />
             <div className={styles.info}>
-                <div className={styles.name}>{track.title}</div>
-                <div className='small_text'>{track.author}</div>
+                <div className={styles.name}>{trackData.title}</div>
+                <div className='small_text'>{trackData.author}</div>
             </div>
             <div className={styles.time}>{formatTime(duration)}</div>
             <div style={{ width: '30px', display: 'flex' }}>
-                <PlayButton />
+                {trackData.id === track.id && isPlaying 
+                ? <PauseButton onClick={() => setIsPlaying(false)} /> 
+                : <PlayButton onClick={() => changeTrack(trackData)} />}
             </div>
         </div>
     );

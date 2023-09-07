@@ -1,13 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import styles from './AudioPlayer.module.scss'
 import PauseButton from '../buttons/PauseButton';
 import PlayButton from '../buttons/PlayButton';
 import { formatTime } from '../../utils/format';
+import { MusicContext } from '../../../context';
 
 
 const AudioPlayer = ({ track, authors, nextTrack, previousTrack }) => {
     const audioRef = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false);
+    const {isPlaying, setIsPlaying} = useContext(MusicContext);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const [volume, setVolume] = useState(1);
@@ -46,8 +47,6 @@ const AudioPlayer = ({ track, authors, nextTrack, previousTrack }) => {
         localStorage.setItem('recentTracks2', JSON.stringify(recentTracks));
     };
 
-
-
     useEffect(() => {
         if (audioRef.current) {
             audioRef.current.src = 'http://localhost:3001/audio/' + track.audio;
@@ -57,6 +56,16 @@ const AudioPlayer = ({ track, authors, nextTrack, previousTrack }) => {
             }
         }
     }, [track.audio]);
+
+    useEffect(() => {
+        if (isPlaying) {
+            audioRef.current.play();
+        } else {
+            audioRef.current.pause();
+
+        }
+
+    }, [isPlaying]);
 
     const togglePlay = () => {
         const audio = audioRef.current;
