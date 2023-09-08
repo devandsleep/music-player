@@ -1,4 +1,4 @@
-import styles from "./SearchInput.module.scss"
+import styles from "./Inputs.module.scss"
 
 const SearchInput = ({ value, onChange }) => {
     return (
