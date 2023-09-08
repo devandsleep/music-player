@@ -6,7 +6,7 @@ import { MusicContext } from '../../../../../../context';
 
 const SongItem = ({ song }) => {
     const [authors, setAuthors] = useState([])
-    const {changeTrack, track, isPlaying, setIsPlaying} = useContext(MusicContext)
+    const {changeTrack} = useContext(MusicContext)
 
     useEffect(() => {
         async function getAuthors() {
