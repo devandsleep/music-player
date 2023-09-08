@@ -1,0 +1,46 @@
+.auth_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    > .auth_win {
+        margin: auto;
+        width: 350px;
+        background-color: rgba(62, 62, 62, 0.9);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 40px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+
+        > .form_switcher {
+            width: 100%;
+            padding: 10px;
+            display: flex;
+
+            > button {
+                background-color: gray;
+                border: 1px solid gainsboro;
+                padding: 5px 20px;
+                font-size: 16px;
+            }
+
+            > .left {
+                border-radius: 10px 0 0 10px;
+            }
+
+            > .right {
+                border-radius: 0 10px 10px 0;
+            }
+        }
+    }
+}
+
+.selected {
+    background-color: darkslategray !important;
+    color: white;
+}
