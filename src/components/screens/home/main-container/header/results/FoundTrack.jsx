@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from './FoundTrack.module.scss'
 import MusicService from '../../../../../../API/MusicService';
+import { MusicContext } from '../../../../../../context';
 
 const FoundTrack = ({ track }) => {
     const [authors, setAuthors] = useState([])
+    const {changeTrack} = useContext(MusicContext)
 
     useEffect(() => {
         async function getAuthors() {
@@ -23,7 +25,7 @@ const FoundTrack = ({ track }) => {
     }, [track.release]);
 
     return (
-        <div className={styles.track_item}>
+        <div className={styles.track_item} onClick={() => changeTrack(track)}>
             <div className={styles.img_container}>
                 <img src={"http://localhost:3001/images/" + track.preview} alt="" />
             </div>
