@@ -4,7 +4,7 @@ import MainContainer from "./main-container/MainContainer";
 import AuthPage from "../authorization/AuthPage";
 
 const Home = () => {
-    const [isAuth, setIsAuth] = useState(false)
+    const [isAuth, setIsAuth] = useState(true)
 
     return (
         <>

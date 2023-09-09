@@ -63,9 +63,9 @@ function App() {
       isPlaying,
       setIsPlaying,
     }}>
-        <div className='container'>
-          <Home />
-        </div>
+      <div className='container'>
+        <Home />
+      </div>
     </MusicContext.Provider>
   )
 }

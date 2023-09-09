@@ -2,8 +2,8 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import styles from './AudioPlayer.module.scss'
 import PauseButton from '../buttons/PauseButton';
 import PlayButton from '../buttons/PlayButton';
-import { formatTime } from '../../utils/format';
 import { MusicContext } from '../../../context';
+import { formatTime } from '../../../utils/format';
 
 
 const AudioPlayer = ({ track, authors, nextTrack, previousTrack }) => {

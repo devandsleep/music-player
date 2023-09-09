@@ -1,6 +1,6 @@
 import styles from './TrackItem.module.scss'
 import PlayButton from '../../../../../ui/buttons/PlayButton'
-import { formatTime } from '../../../../../utils/format';
+import { formatTime } from '../../../../../../utils/format';
 import { useContext, useEffect, useState } from 'react';
 import { MusicContext } from '../../../../../../context';
 import PauseButton from '../../../../../ui/buttons/PauseButton';
