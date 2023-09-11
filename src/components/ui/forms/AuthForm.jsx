@@ -12,7 +12,7 @@ const RegForm = ({ authData, setAuthData }) => {
 
     return (
         <>
-            <MainInput value={authData.email} onChange={handleEmailChange} type="email" placeholder='email' />
+            <MainInput value={authData.email} onChange={handleEmailChange} type="email" placeholder='username' />
             <MainInput value={authData.password} onChange={handlePasswordChange} type="password" placeholder='password' />
         </>
     );

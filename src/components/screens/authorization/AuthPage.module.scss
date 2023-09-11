@@ -37,6 +37,23 @@
                 border-radius: 0 10px 10px 0;
             }
         }
+
+        > .btn_container {
+            display: flex;
+            margin-left: auto;
+
+            > button {
+                background-color: transparent;
+                border: 1px solid white;
+                border-radius: 15px;
+                padding: 5px 10px;
+                font-size: 18px;
+
+                &:hover {
+                    color: white;
+                }
+            }
+        }
     }
 }
 

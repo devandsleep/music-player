@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import Home from './components/screens/home/Home'
-import { MusicContext } from './context'
+import { AuthContext, MusicContext } from './context'
 import MusicService from './API/MusicService'
+import { BrowserRouter } from 'react-router-dom'
+import AppRouter from './components/AppRouter'
 
 function App() {
   const [playlists, setPlaylists] = useState([{
@@ -50,6 +51,15 @@ function App() {
     setIsPlaying(true)
   }
 
+  const [isAuth, setIsAuth] = useState(false)
+
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      setIsAuth(true)
+    }
+  }, [isAuth])
+
+
   return (
     <MusicContext.Provider value={{
       playlists,
@@ -64,7 +74,14 @@ function App() {
       setIsPlaying,
     }}>
       <div className='container'>
-        <Home />
+        <AuthContext.Provider value={{
+          isAuth,
+          setIsAuth,
+        }}>
+          <BrowserRouter>
+            <AppRouter />
+          </BrowserRouter>
+        </AuthContext.Provider>
       </div>
     </MusicContext.Provider>
   )

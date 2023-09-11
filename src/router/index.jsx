@@ -1,10 +1,8 @@
 import AuthPage from "../components/screens/authorization/AuthPage"
+import Home from '../components/screens/home/Home'
 
 export const privateRoutes = [
-    {path: '/', component: <Posts />},
-    {path: '/post/:postId', component: <PostPage />},
-    {path: '/error', component: <Error />},
-    {path: '/about', component: <About />},
+    {path: '/', component: <Home />},
 ]
 
 export const publicRoutes = [
